@@ -3,12 +3,55 @@
   <head>
   	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<title>JS6 - Hide a Form</title>
 </head>
 <body ng-controller="js6Troller">
+
+	<!-- EDIT PROFILE START -->
+
+	<form ng-show="formSwitch" class="form-container">
+		<h2>Edit Profile</h2>
+		<label>Name:</label>
+		<input type="text" ng-model="user.name">
+		<label>Bio:</label>
+		<textarea ng-model="user.bio"></textarea>
+		<label>Favorite Books:</label>
+		<input type="text" ng-model="user.favoriteBooks">
+		<label>Favorite JS Libraries:</label>
+		<input type="text" ng-model="user.favoriteJSLibraries">
+		<button>Update Profile</button>
+	</form>
+
+	<!-- SHOW PROFILE START -->
+
+	<img class="user-image" ng-src="{{user.imageURL}}">
+
+	<div class="content-container">
+
+		<h1 class="user-title">{{user.name}}</h1>
+
+		<button class="edit-button" ng-click="showEditForm()"><i class="fa fa-pencil" > Edit Profile</i></button>
+
+		<p class="content-text">{{user.bio}}</p>
+
+		<p class="content-text"><strong>Favorite Books:</strong>
+			<ul class="list-style">
+				<i class="fa fa-book"></i> <li class="list-item-style" ng-repeat="bookName in user.favoriteBooks">{{bookName}}</li>
+			</ul>
+		</p>
+
+		<p class="content-text"><strong>Favorite JS Libraries:</strong>
+			<ul class="list-style">
+				<i class="fa fa-stack-overflow"></i> <li class="list-item-style" ng-repeat="libraryName in user.favoriteJSLibraries">{{libraryName}}</li>
+			</ul>
+		</p>
+
+	</div>
 
 </body>
 
